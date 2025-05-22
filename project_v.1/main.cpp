@@ -1,12 +1,25 @@
 #include <iostream>
 using namespace std;
 
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+
 int main() {
     int n;
 
     cout << "Enter the number of elements: ";
     cin >> n;
-
 
     if (n <= 0) {
         cout << "Invalid size! Please enter a positive number." << endl;
@@ -15,28 +28,19 @@ int main() {
 
     int* masA = new int[n];
 
-
     cout << "Input " << n << " numbers: ";
     for (int i = 0; i < n; i++) {
         cin >> masA[i];
     }
 
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n - 1; j++) {
-            if (masA[j] > masA[j + 1]) {
-                swap(masA[j], masA[j + 1]);
-            }
-        }
-    }
-
+    // Виклик сортування вставками
+    insertionSort(masA, n);
 
     cout << "Sorted array: ";
     for (int i = 0; i < n; i++) {
         cout << masA[i] << " ";
     }
     cout << endl;
-
 
     delete[] masA;
 
