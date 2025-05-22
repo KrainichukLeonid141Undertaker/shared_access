@@ -1,6 +1,20 @@
 #include <iostream>
 using namespace std;
 
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+
 int* DeleteArray(int* mas, int& size, int val) {
     int newSize = 0;
     for (int i = 0; i < size; ++i) {
@@ -13,6 +27,7 @@ int* DeleteArray(int* mas, int& size, int val) {
     int k = 0;
     for (int i = 0; i < size; ++i) {
         if (mas[i] != val) {
+            temp[k++] = mas[i];
             temp[k] = mas[i];
             ++k;
         }
@@ -41,6 +56,7 @@ int main() {
         cin >> masA[i];
     }
 
+    insertionSort(masA, n);
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n - 1; j++) {
@@ -55,7 +71,6 @@ int main() {
         cout << masA[i] << " ";
     }
     cout << endl;
-
 
     int val;
     cout << "Enter value to delete from array: ";
