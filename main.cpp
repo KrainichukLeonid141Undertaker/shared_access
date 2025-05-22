@@ -28,6 +28,8 @@ int* DeleteArray(int* mas, int& size, int val) {
     for (int i = 0; i < size; ++i) {
         if (mas[i] != val) {
             temp[k++] = mas[i];
+            temp[k] = mas[i];
+            ++k;
         }
     }
 
@@ -55,6 +57,14 @@ int main() {
     }
 
     insertionSort(masA, n);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (masA[j] > masA[j + 1]) {
+                swap(masA[j], masA[j + 1]);
+            }
+        }
+    }
 
     cout << "Sorted array: ";
     for (int i = 0; i < n; i++) {
